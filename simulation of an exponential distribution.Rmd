@@ -1,0 +1,32 @@
+---
+title: "Simulation of an Exponential Distribution"
+author: "Giacinto Maggiore"
+date: "April 19, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The goal of the project is to investigate a  0.2-exponential distribution in R and the distribution of avarages of 40 0.2-exponentials.
+
+ 
+###Comparition between theoretical mean  and sample mean
+First of all we construct the sample means.
+
+
+```{r sampleexp}
+set.seed(20893)
+lambda<-.2
+n<-40
+nsim<-1000
+sample<-matrix(data = rexp(n*nsim,lambda),nrow = 40,
+               ncol = 1000)
+sampleMeans<-colMeans(sample)
+str(sampleMeans)
+mean(sampleMeans)
+
+```
+
+The mean of the sample is `r mean(sampleMeans)`. It is close to the theoretical mean 1/lambda = `r 1/lambda`
